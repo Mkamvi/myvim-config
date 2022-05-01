@@ -124,7 +124,8 @@ Plugin 'junegunn/gv.vim'  " git history
 Plugin 'morhetz/gruvbox'  " 主题
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
-
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
