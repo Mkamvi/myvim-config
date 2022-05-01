@@ -93,8 +93,21 @@ let g:vim_jsx_pretty_highlight_close_tag = 1
 let g:vim_jsx_pretty_colorful_config = 1
 
 
-" CSS
-" let g:cssColorVimDoNotMessMyUpdatetime = 1
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+
+" Snippets
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsSnippetDirectories=['UltiSnips', 'MySnips']
+" 插件不认识的文件
+autocmd FileType javascriptreact UltiSnipsAddFiletypes javascript_react
+
 
 " Plugins  =========>>>>>>>>>>>
 " set the runtime path to include Vundle and initialize
@@ -141,7 +154,6 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 "
 " Plugins  <<<<<<<<<<<<==========
-
 
 
 " NumberToogle  ==============>>>>>>>>>
