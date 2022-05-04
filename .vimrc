@@ -27,6 +27,15 @@ nnoremap <C-s> <ESC>:w<CR>
 nnoremap <leader>w :q<CR>
 nnoremap <leader>l :call NumberToggle()<CR>
 nnoremap <C-j> :belowright vert term<CR><C-w>:vertical resize 40<CR><C-w>:set wfw<CR>
+nnoremap <S-Up> :resize -1<CR>
+nnoremap <S-Down> :resize +1<CR>
+nnoremap <S-Left> :vertical resize -1<CR>
+nnoremap <S-Right> :vertical resize +1<CR>
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>e :Buffers<CR>
+nnoremap <leader>b :NERDTreeToggle<CR>
+nnoremap <leader>1 :NERDTreeFocus<CR>
+nnoremap <leader>a :Ag<CR>
 " 通用快捷键 <<<<<<<<<<<<=============
 
 
@@ -72,8 +81,6 @@ set showtabline=2
 
 
 " NERDTree config ===========>>>>>>>>>>
-nnoremap <leader>b :NERDTreeToggle<CR>
-nnoremap <leader>1 :NERDTreeFocus<CR>
 let g:NERDTreeShowLineNumbers = 1
 let g:NERDTreeWinSize=40
 let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0
@@ -107,7 +114,12 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'MySnips']
 " 插件不认识的文件
 autocmd FileType javascriptreact UltiSnipsAddFiletypes javascript_react
+autocmd FileType typescriptreact UltiSnipsAddFiletypes typescript_react
 
+
+" JSON
+let g:vim_json_syntax_concea=0  " 展示双引号
+let g:indentLine_noConcealCursor=""
 
 " Plugins  =========>>>>>>>>>>>
 " set the runtime path to include Vundle and initialize
