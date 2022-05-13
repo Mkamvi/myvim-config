@@ -36,6 +36,7 @@ nnoremap <leader>e :Buffers<CR>
 nnoremap <leader>b :NERDTreeToggle<CR>
 nnoremap <leader>1 :NERDTreeFocus<CR>
 nnoremap <leader>a :Ag<CR>
+nnoremap <C-b> :Bookmark<CR>
 " 通用快捷键 <<<<<<<<<<<<=============
 
 
@@ -84,8 +85,9 @@ set showtabline=2
 let g:NERDTreeShowLineNumbers = 1
 let g:NERDTreeWinSize=40
 let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0
+let NERDTreeShowBookmarks=1
 " Open the existing NERDTree on each new tab.
-autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+" autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 " NERDTree config <<<<<<<<<<<==========
 
 
