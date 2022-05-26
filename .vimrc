@@ -1,32 +1,20 @@
-" = =  = =  = =  ===  = = = =
-" = =          =  =
-" =     X · M     = =  :!
-" =   =      =    = =  = = =  =
-" =======   ====
-"                 =======       |
-"   ****       k        =======
-"  *    *      +      | ======= |
-"       *  h+++++++l  | y -> p  |  =
-"      *       +      | i v e   |    =
-"      *       +      |         | C-F  =
-"      *       +      | C-B     | C-B   =
-"              j      | N-G     | w       =
-"      "              | dd      | b         =
-" =============================================
 "
+" Author: XM
+" Date: 2022-05-26 21:42
+" Git: https://github.com/X-Myh/myvim-config
 "
+ """""""""""""""""""""""""""""""""""""""""""
 
-
-" Leader键  <D-.> || <S-.>
-let mapleader = ">"
+" Leader键
+let mapleader = ","
 
 
 " 通用快捷键 ===========>>>>>>>>>>>>>>
 inoremap <C-s> <ESC>:w<CR>
 nnoremap <C-s> <ESC>:w<CR>
-nnoremap <leader>w :q<CR>
 nnoremap <leader>l :call NumberToggle()<CR>
-nnoremap <C-j> :belowright vert term<CR><C-w>:vertical resize 40<CR><C-w>:set wfw<CR>
+" 考虑删除
+nnoremap <C-j> :belowright vert term<CR><C-w>:vertical resize 80<CR><C-w>:set wfw<CR>
 nnoremap <S-Up> :resize -1<CR>
 nnoremap <S-Down> :resize +1<CR>
 nnoremap <S-Left> :vertical resize -1<CR>
@@ -41,14 +29,13 @@ nnoremap <C-b> :Bookmark<CR>
 
 
 " 编辑器设置 ===========>>>>>>>>>>>>>>
-
 syntax on
 set encoding=UTF-8
-set guifont=DroidSansMono\ Nerd\ Font:h11
+set guifont=Hack\ Nerd\ Font:h12
 set nocompatible
 filetype off
-colorscheme gruvbox
-" highlight Normal guibg=NONE ctermbg=None
+set background=dark
+colorscheme onehalfdark
 
 "缩进
 set	tabstop=2
@@ -56,7 +43,6 @@ set softtabstop=2
 set expandtab " 空格代替
 set autoindent
 set shiftwidth=2 " 自动缩进
-" let g:indentLine_enabled = 0
 let g:indentLine_leadingSpaceEnabled = 1  " 使用·展示缩进空格
 let g:indentLine_leadingSpaceChar = '·'
 autocmd BufEnter NERD_tree* :LeadingSpaceDisable  " 缩进问题
@@ -86,8 +72,6 @@ let g:NERDTreeShowLineNumbers = 1
 let g:NERDTreeWinSize=40
 let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0
 let NERDTreeShowBookmarks=1
-" Open the existing NERDTree on each new tab.
-" autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 " NERDTree config <<<<<<<<<<<==========
 
 
@@ -123,6 +107,10 @@ autocmd FileType typescriptreact UltiSnipsAddFiletypes typescript_react
 let g:vim_json_syntax_concea=0  " 展示双引号
 let g:indentLine_noConcealCursor=""
 
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
 " Plugins  =========>>>>>>>>>>>
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -153,6 +141,9 @@ Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'mileszs/ack.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-commentary'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -180,3 +171,14 @@ function! NumberToggle()
     set relativenumber
   endif
 endfunc
+
+
+" 删除尾空格
+fun! StripTrailingWhitespace()
+    "Don't strip on these filetypes
+    if &ft =~ 'markdown'
+        return
+    endif
+    %s/\s\+$//e
+endfun
+autocmd BufWritePre * call StripTrailingWhitespace()
