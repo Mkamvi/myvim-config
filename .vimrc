@@ -107,6 +107,9 @@ autocmd FileType typescriptreact UltiSnipsAddFiletypes typescript_react
 let g:vim_json_syntax_concea=0  " 展示双引号
 let g:indentLine_noConcealCursor=""
 
+" Git
+let g:git_messenger_include_diff='current'
+
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
@@ -144,6 +147,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'mileszs/ack.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-commentary'
+Plugin 'rhysd/git-messenger.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
